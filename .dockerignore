@@ -1,0 +1,15 @@
+.git
+.dockerdata
+.pyvenv
+.mypy_cache
+__pycache__
+**/__pycache__
+*.pyc
+*.env
+conf
+static_collected
+Dockerfile
+README.md
+.DS_Store
+storage
+**/node_modules
