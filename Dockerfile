@@ -12,12 +12,12 @@ RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
 	postgresql-client \
 	&& rm -rf /var/lib/apt/lists/* \
-	&& pip3 install poetry \
-	&& pip3 install awscli
+	&& pip3 install poetry
+
+WORKDIR /app
+COPY --from=frontend /build/dist ./frontend-dist
 
 WORKDIR /app/backend
-
-COPY --from=frontend /build/dist ./frontend-dist
 COPY ./backend/manage.py* ./backend/pyproject.toml* ./
 COPY ./backend/numnum ./numnum
 COPY ./backend/apps ./apps

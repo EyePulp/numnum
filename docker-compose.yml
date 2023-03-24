@@ -53,7 +53,7 @@ services:
     links:
       - db
 
-  numnum.local:
+  nginx:
     image: nginx:1.17
     ports:
         - '${LOCAL_APP_IP}:80:80'

@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["numnum.local", "numnum.fly.dev"]
+ALLOWED_HOSTS = ["numnum.local", "numnum.fly.dev", "backend"]
 
 
 # Application definition
@@ -72,6 +72,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "numnum.wsgi.application"
 
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
