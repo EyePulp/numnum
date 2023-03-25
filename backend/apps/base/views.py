@@ -14,4 +14,4 @@ def frontend_index(request, path=""):
 
 
 def index(request):
-    return HttpResponse("Hello world!")
+    return HttpResponse("Hello world?")

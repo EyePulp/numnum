@@ -11,6 +11,11 @@ processes = []
 #   source="numnum_storage"
 #   destination="/app/storage"
 
+[[statics]]
+  guest_path = "/app/frontend-dist/assets"
+  url_prefix = "/assets"
+
+
 [[services]]
   http_checks = []
   internal_port = 8000
