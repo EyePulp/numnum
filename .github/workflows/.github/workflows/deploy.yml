@@ -1,0 +1,27 @@
+name: fly.io deployment
+on:
+  workflow_run:
+    workflows: [Django Tests]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Deployment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  # older effort to deploy to DO
+  # deploy:
+  #   name: Deployment
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: DO
+  #     uses: digitalocean/app_action@main
+  #     with:
+  #       app_name: obits-app
+  #       token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
