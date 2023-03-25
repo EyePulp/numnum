@@ -1,9 +1,10 @@
 FROM node:18.14 as frontend
 WORKDIR /build
-COPY ./frontend/package.json ./frontend/vite.config.ts ./frontend/tsconfig.* ./frontend/env.d.ts ./frontend/index.html ./
+COPY ./frontend/package.json ./frontend/yarn.lock ./frontend/vite*.config.ts ./frontend/tsconfig.* ./frontend/env.d.ts ./frontend/index.html ./
+COPY ./frontend/tailwind.config.cjs ./frontend/postcss.config.cjs ./
 COPY ./frontend/public ./
 COPY ./frontend/src ./src
-RUN yarn install --production=false && NODE_ENV=production yarn build --outDir=/dist
+RUN NODE_ENV=development yarn install && NODE_ENV=production yarn build --outDir=/dist
 
 
 FROM python:3.10
