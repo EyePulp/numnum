@@ -25,11 +25,9 @@ jobs:
         with:
           python-version: '3.10'
 
-      - run: |
-          sudo apt-get install -y postgresql-client
-          pip3 install poetry
-          poetry config virtualenvs.create false
-          poetry install
-
+      - run: sudo apt-get install -y postgresql-client
+      - run: pip3 install poetry
+      - run: poetry config virtualenvs.create false
+      - run: poetry -C ./backend install
       - run: python manage.py migrate;
       - run: python -m pytest
