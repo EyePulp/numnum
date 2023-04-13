@@ -4,7 +4,9 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./backend
     services:
       postgres:
         image: postgres:14
@@ -28,6 +30,6 @@ jobs:
       - run: sudo apt-get install -y postgresql-client
       - run: pip3 install poetry
       - run: poetry config virtualenvs.create false
-      - run: poetry -C ./backend install
-      - run: python manage.py migrate;
+      - run: poetry install
+      - run: python manage.py migrate
       - run: python -m pytest
