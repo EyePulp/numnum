@@ -40,6 +40,7 @@ services:
       - ".dev.env"
     volumes:
       - ./backend/apps/:/app/backend/apps
+      - ./backend/tests/:/app/backend/tests
       - ./backend/manage.py:/app/backend/manage.py
       - ./backend/pyproject.toml:/app/backend/pyproject.toml
       - ./backend/numnum:/app/backend/numnum
