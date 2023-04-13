@@ -44,7 +44,7 @@ export const useScoreStore = defineStore('score', () => {
     }
 
     function getCurrentRound(subject: string): number {
-        return Math.max(Object.keys(scores?.[subject] || { 0: null }).map(parseInt));
+        return Math.max(...Object.keys(scores?.[subject] || { 0: null }).map(parseInt));
     }
 
     function getPoints(subject?: string, round?: number) {
