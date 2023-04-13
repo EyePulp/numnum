@@ -41,6 +41,10 @@ case $1 in
         docker-compose  run --rm  db "${@:2}"
     ;;
 
+    tc)
+       yarn --cwd frontend/ type-check "${@:2}"
+    ;;
+
     manage)
         docker-compose  run --rm  $COMPOSE_SERVICE_NAME python manage.py "${@:2}"
     ;;
